@@ -15,7 +15,7 @@
             
                 var $indicators = $carousel.find('.carousel-indicators');
                 
-                $carousel.find('.carousel-inner').children('.carousel-item').each(function(index, _) {   // '_' denotes unused prop
+                $carousel.find('.carousel-inner').children('.carousel-item').each(function(index, _) {   // '_' denotes unused parameter
                     index === 0 ? 
                         $indicators.append(`<li data-target=${carouselId} data-slide-to=${index} class='active'></li>`) :
                         $indicators.append(`<li data-target=${carouselId} data-slide-to=${index}></li>`);
