@@ -1,0 +1,20 @@
+#propertiesCarousel.carousel.slide.container(data-ride="carousel" data-interval="false")
+    .carousel-inner
+		- var cursor = 0;
+		- for (var i = 0; i < featuredProperties.length / 3; i++)
+			if i === 0
+				.carousel-item.active
+					- for (var j = 0; j < 3; j++)
+						if j !== 0 && j % 3 === 0
+							- break
+						+property(
+							featuredProperties[cursor]
+						)
+						- cursor++
+			else
+				.carousel-item
+					- for (var j = 0; j < 3; j++)
+						+property(
+							featuredProperties[cursor]
+						)
+						- cursor++
