@@ -1,7 +1,35 @@
 #propertiesCarousel.carousel.slide.container(data-ride="carousel" data-interval="false")
     .carousel-inner
+    		//- Where to set numSlides? 
+		script.
+			function onResize() {
+				var windowWidth = window.innerWidth;
+				var numSlides = 5;
+				// If window width is less than breakpoint, show the specified number of slides
+				// i.e. windowWidth = 950, breakpoint = 992, show 4 slides, 768 < windowWidth < 992
+				var breakpoints = [{
+					breakpoint: 992,
+					numSlides: 4
+				},
+				{
+					breakpoint: 768,
+					numSlides: 3
+				},
+				{
+					breakpoint: 640,
+					numSlides: 2
+				}]
+
+				// If windowWidth < breakpoint, set those rules
+				numSlides = breakpoints.forEach(rule => {
+					if (windowWidth < rule.breakpoint) {
+						return rule.numSlides;
+					}
+				});
+			}
+			$(window).on('resize', onResize);
 		- var cursor = 0;
-		- for (var i = 0; i < featuredProperties.length / 3; i++)
+		- for (var i = 0; i < featuredProperties.length / numSlides; i++)
 			if i === 0
 				.carousel-item.active
 					- for (var j = 0; j < 3; j++)
